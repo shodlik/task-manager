@@ -40,7 +40,7 @@
     </div>
 </nav>
 <div class="container pt-2">
-    <?php eval("?>".$content."<?php")  ?>
+    <?= $content ?>
 </div>
 <?php $this->endPage() ?>
 </body>

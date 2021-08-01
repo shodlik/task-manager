@@ -17,6 +17,7 @@ class SiteController extends Controller
 
     public function actionIndex(){
         $this->title = "Список задач";
+        phpinfo();
         $searchModel = new Task();
         $model = $searchModel->findSearch($this->get());
         return $this->render("index",['model'=>$model,'searchModel'=>$searchModel]);
@@ -42,6 +43,7 @@ class SiteController extends Controller
     public function actionCreate(){
         $this->title = "Добавить задач";
         $model = new Task();
+        $model->status = Task::STATUS_NEW;
         if($model->load($this->post()) && $model->save()){
             View::setAlert('success','Успешно создан задачу');
             $this->redirect('/site/index');

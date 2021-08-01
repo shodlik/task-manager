@@ -244,6 +244,8 @@ class ActiveRecord extends Db
         if($url['path']=="/")
             $url['path'] = self::default_controller.self::default_action;
         $current_page = isset($query['page'])?$query['page']:1;
+        if($page==1)
+            return"";
         for ($i=0; $i<$page; $i++){$k++;
             $active_class= "btn-light";
 
