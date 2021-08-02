@@ -61,10 +61,7 @@ class SiteController extends Controller
             $this->redirect('/site/profil');die;
         }
         if($model->load($this->post()) && $model->save()){
-            if($model->status==Task::STATUS_EDITED)
-                View::setAlert('success','Успешно изменен задачу');
-            else
-                View::setAlert('info','Задачу не изменен');
+                View::setAlert('success','Успешно изменен!!!');
             $this->redirect('/site/profil');
         }
         return $this->render("create",['model'=>[$model]]);
