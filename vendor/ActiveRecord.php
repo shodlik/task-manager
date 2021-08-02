@@ -83,13 +83,14 @@ class ActiveRecord extends Db
         $values=[];
         foreach ($columns as $col){
             $value = trim($this->$col);
-            $keys[]="`{$col}`";
-            $values[]="'{$value}'";
+            if($col!="id") {
+                $keys[] = "`{$col}`";
+                $values[] = "'{$value}'";
+            }
         }
         $table = get_class($this);
         $sql = "INSERT INTO {$table::tablename()} (".implode(",",$keys).")
                 VALUES (".implode(",",$values).");";
-        echo $sql;die;
         if ($conection->query($sql) === TRUE) {
             $conection->close();
             return true;
