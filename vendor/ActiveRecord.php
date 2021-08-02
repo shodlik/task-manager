@@ -89,6 +89,7 @@ class ActiveRecord extends Db
         $table = get_class($this);
         $sql = "INSERT INTO {$table::tablename()} (".implode(",",$keys).")
                 VALUES (".implode(",",$values).");";
+        echo $sql;die;
         if ($conection->query($sql) === TRUE) {
             $conection->close();
             return true;
