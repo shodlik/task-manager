@@ -10,8 +10,8 @@ return [
     'db'=>[
        'host'=>'localhost',
        'port'=>'3128',
-       'db_name'=>'task',
-       'username'=>'root',
-       'password'=>'',
+       'db_name'=>'shg_for_uz_task',
+       'username'=>'shg_f_task',
+       'password'=>'Jilli199@',
     ]
 ];
