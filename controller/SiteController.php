@@ -17,7 +17,6 @@ class SiteController extends Controller
 
     public function actionIndex(){
         $this->title = "Список задач";
-        phpinfo();
         $searchModel = new Task();
         $model = $searchModel->findSearch($this->get());
         return $this->render("index",['model'=>$model,'searchModel'=>$searchModel]);
