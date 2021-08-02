@@ -106,8 +106,11 @@ class ActiveRecord extends Db
         $query = new Task();
         $oldData = $query->findOne(['id'=>$this->id]);
         foreach ($columns as $col){
-            if($this->$col!=$oldData[$col]){
-                $this->status = Task::STATUS_EDITED;
+
+            if($col=="description"){
+                if($this->description!=$oldData['description']){
+                    $this->status = Task::STATUS_EDITED;
+                }
             }
             $value = trim($this->$col);
             $values[]=$col."='".$value."'";
