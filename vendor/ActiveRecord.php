@@ -218,8 +218,13 @@ class ActiveRecord extends Db
         $number_of_result  = $connections->query($sql)->num_rows;
         $number_of_page = ceil ($number_of_result / $limit);
         $sortOrder="";
-        if(isset($params['s']) && isset($params['d']) && isset($params['d'])!="")
-            $sortOrder = "ORDER BY {$params['s']} {$params['d']}";
+        if(isset($params['s']) && isset($params['d']) && isset($params['d'])!=""){
+            $columns = $this->getColumns();
+            if(in_array($params['s'],$columns) && in_array($params['d'],['ASC','DESC','']) ){
+                $sortOrder = "ORDER BY {$params['s']} {$params['d']}";
+            }
+        }
+
         $sql = "select * from {$class::tablename()} {$sortOrder} LIMIT ".$page_first_result.",".$limit;
         $result = $connections->query($sql);
         if ($result->num_rows > 0) {
