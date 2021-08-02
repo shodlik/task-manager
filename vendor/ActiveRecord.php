@@ -285,7 +285,7 @@ class ActiveRecord extends Db
                     $query['d']="DESC";
                     break;
                 case "DESC":
-                    $query['d']="";
+                    $query['d']="ASC";
                     break;
                 default:
                     $query['d']="ASC";
